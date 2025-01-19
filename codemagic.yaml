@@ -5,19 +5,17 @@ workflows:
     environment:
       vars:
         GRADLEW_PATH: "./gradlew" # Path to gradlew in the repo
-      android:
-        build: true
-        ndk: latest
+      java:
+        version: jdk11 # Java version for building Android apps
     scripts:
       - name: Install dependencies
-        script: |
-          chmod +x ./gradlew
+        script: chmod +x ./gradlew
       - name: Build APK
-        script: |
-          ./gradlew assembleDebug
+        script: ./gradlew assembleDebug
     artifacts:
       - build/outputs/**/*.apk
     publishing:
       email:
         recipients:
           - adnan21abdirahman@gmail.com
+

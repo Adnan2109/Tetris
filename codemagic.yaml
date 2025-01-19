@@ -4,11 +4,9 @@ workflows:
     max_build_duration: 60
     environment:
       vars:
-        GRADLEW_PATH: "./gradlew" # Path to gradlew in the repo
-      java:
-        version: jdk11 # Java version for building Android apps
+        GRADLEW_PATH: "./gradlew" # Path to Gradle wrapper
     scripts:
-      - name: Install dependencies
+      - name: Set Gradle executable permissions
         script: chmod +x ./gradlew
       - name: Build APK
         script: ./gradlew assembleDebug
@@ -18,4 +16,5 @@ workflows:
       email:
         recipients:
           - adnan21abdirahman@gmail.com
+
 

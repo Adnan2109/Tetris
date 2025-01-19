@@ -1,0 +1,23 @@
+workflows:
+  android-workflow:
+    name: Build Tetris APK
+    max_build_duration: 60
+    environment:
+      vars:
+        GRADLEW_PATH: "./gradlew" # Path to gradlew in the repo
+      android:
+        build: true
+        ndk: latest
+    scripts:
+      - name: Install dependencies
+        script: |
+          chmod +x ./gradlew
+      - name: Build APK
+        script: |
+          ./gradlew assembleDebug
+    artifacts:
+      - build/outputs/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - adnan21abdirahman@gmail.com
